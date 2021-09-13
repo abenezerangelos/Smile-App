@@ -20,8 +20,11 @@ def index():
 
 @bp_routes.route('/postsmile', methods=['GET', 'POST'])  
 def postsmile():
-    postForm = PostForm()
-    if form.validate_on_submit():
-        flash('A new smile post, "' + postForm.title + '" has been created! ')
-        return render_template('create.html', form = postForm.form())
-    return render_template('create.html', form = form)
+    pform = PostForm()
+    if pform.validate_on_submit():
+        newPostForm = Post(title = pform.title.data, body = pform.body.data, happiness_level = pform.happiness_level.data)
+        db.session.add(newPostForm)
+        db.session.commit()
+        flash('A new smile post, "' + pform.title.data + '" has been created! ')
+        return redirect(url_for('routes.index'))
+    return render_template('create.html', form = pform)

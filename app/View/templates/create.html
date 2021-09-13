@@ -12,15 +12,12 @@
                 <!--Displays the form item for the post's `title`.-->
                 {{ form.title.label }}<br>
                 {{ form.title(class="formtitle") }}<br>
-                <!-- TODO: (milestone 1) Display the error messages of the `title` field validator (if there are any validation errors).   -->  
-                {{ wtf.quick_form(form, forms.title) }}
-                <!-- TODO: (milestone1) Include the form item for the post's `body`. Apply appropriate styling for the `body`form  item.  -->  
-                {{ form.body }}
-                <!-- TODO: (milestone 1) Display the error messages of the `body` field validator (if there are any validation errors).   -->  
-                {{ wtf.quick_form(form, forms.body)}}
+               
+                {{ form.body.label }}<br>
+                {{ form.body }}<br>
+                
             </div>
-            
-            <!-- TODO: (milestone1) Include the form item for `happiness_level` selection. Apply appropriate styling for the `happiness_level` form item.  -->  
+            {{ form.happiness_level.label }}<br>
             {{ form.happiness_level }}
             <!-- TODO: (milestone2) Include the form item for `tag` selection.   -->  
 

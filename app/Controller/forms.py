@@ -8,4 +8,4 @@ class PostForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
     happiness_level = SelectField('Happiness Level',choices = [(3, 'I can\'t stop smiling'), (2, 'Really happy'), (1,'Happy')])
     submit = SubmitField('Post')
-    body = TextAreaField('Body', validators=[DataRequired(), Length(max=1500)])
+    body = TextAreaField('Post Message', validators=[DataRequired(), Length(max=1500)])
