@@ -84,3 +84,16 @@ a:hover {
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     padding: 7px;
 }
+
+.posttimestamp {
+    text-align: middle;
+    vertical-align: middle;
+    font-style: italic;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 2px;
+}
+
+.likecount {
+    vertical-align: center;
+    font-weight: bold;
+}
