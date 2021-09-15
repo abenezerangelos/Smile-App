@@ -97,3 +97,26 @@ a:hover {
     vertical-align: center;
     font-weight: bold;
 }
+
+.formtitle {
+    width: 50%;
+    font-family:Arial, Helvetica, sans-serif;
+    margin: 0px;
+    padding: 5px;
+}
+
+.formbody {
+    width: 50%;
+    height: 80px;
+    font-family:Arial, Helvetica, sans-serif;
+    margin: 0px;
+    padding: 5px;
+}
+
+.formselect {
+    width: 13%;
+    height: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
+    padding: 5px;
+}

@@ -14,11 +14,11 @@
                 {{ form.title(class="formtitle") }}<br>
                
                 {{ form.body.label }}<br>
-                {{ form.body }}<br>
+                {{ form.body(class="formbody") }}<br>
                 
             </div>
             {{ form.happiness_level.label }}<br>
-            {{ form.happiness_level }}
+            {{ form.happiness_level(class="formselect") }}
             <!-- TODO: (milestone2) Include the form item for `tag` selection.   -->  
 
             {{ form.submit(class="button") }}
