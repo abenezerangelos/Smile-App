@@ -22,7 +22,7 @@ def index():
 def postsmile():
     pform = PostForm()
     if pform.validate_on_submit():
-        newPostForm = Post(title = pform.title.data, body = pform.body.data, happiness_level = pform.happiness_level.data)
+        newPostForm = Post(title = pform.title.data, body = pform.body.data, happiness_level = pform.happiness_level.data, tags = pform.tag.data)
         db.session.add(newPostForm)
         db.session.commit()
         flash('A new smile post, "' + pform.title.data + '" has been created! ')

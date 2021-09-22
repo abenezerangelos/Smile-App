@@ -18,8 +18,9 @@
                 
             </div>
             {{ form.happiness_level.label }}<br>
-            {{ form.happiness_level(class="formselect") }}
+            {{ form.happiness_level(class="formselect") }}<br>
             <!-- TODO: (milestone2) Include the form item for `tag` selection.   -->  
+            {{ form.tag(class="formselect") }}<br><br><br><br><br>
 
             {{ form.submit(class="button") }}
         </form>
