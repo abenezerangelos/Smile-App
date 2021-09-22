@@ -19,3 +19,7 @@ class PostForm(FlaskForm):
     submit = SubmitField('Post')
     body = TextAreaField('Post Message', validators=[DataRequired(), Length(max=1500)])
 
+class SortForm():
+    sort_order = SelectField(choices = [(4, 'Date'),(3, 'Title'), (2, '# of likes'), (1, 'Happiness level')])
+    submit = SubmitField('Refresh')
+
