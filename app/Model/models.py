@@ -1,11 +1,10 @@
 from datetime import datetime
 from app import db
 
-class postTags(db.Model):
-    post_id = db.Column(db.Integer, db.ForeignKey('post.id'), primary_key=True)
-    tag_id = db.Column(db.Integer, db.ForeignKey('tag.id'), primary_key=True)
-    postrelationship = db.relationship('Post')
-    tagrelationship = db.relationship('Tag')
+postTags = db.Table('post_tags',
+    db.Column('post_id', db.Integer, db.ForeignKey('post.id')),
+    db.Column('tag_id', db.Integer, db.ForeignKey('tag.id'))
+)
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -14,7 +13,10 @@ class Post(db.Model):
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     likes = db.Column(db.Integer, default = 0)
     happiness_level = db.Column(db.Integer, default = 3)
-    tags = db.relationship('post_tags', secondary = postTags, primaryjoin=(postTags.post_id == id), backref=db.backref('postTags', lazy='dynamic'), lazy='dynamic')
+    tags = db.relationship(
+        'Tag', secondary = postTags, 
+        primaryjoin=(postTags.c.post_id == id), 
+        backref=db.backref('postTags', lazy='dynamic'), lazy='dynamic')
     
     def get_tags(self):
         return self.tags
