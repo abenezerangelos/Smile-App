@@ -46,9 +46,12 @@
         <tr> 
             <td colspan="3" style = "text-align:center" valign="bottom">  
                 <br>
+                
                 <!-- (milestone2) TODO: include all the tags associated with the post-->
                 {% for tags in post.get_tags().all() %}
-                    {{tags.name}}
+                    <div class="tagitem">
+                        {{tags.name}}
+                    </div>
                 {% endfor %}
             </td>
         </tr>
