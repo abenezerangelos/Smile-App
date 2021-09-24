@@ -7,8 +7,14 @@
     <h2>Number of smiles: {{ "11" }} </h2>
 
     <!-- TODO: (milestone 2) Add the template to render an instance of a `sortForm`. The form should display the sort attribute select box and the "Refresh" submit button.
-            Style the `sortorder` form element using the `formselect` CSS element we defined in milestone1 -->
-
+            Style the `sortorder` form element using the `formselect` CSS element we defined in milestone1 -->   
+    <form action="{{url_for('routes.index')}}" method="post"> 
+        {{ form.hidden_tag() }}
+        <div> 
+            Sort by: {{form.sort_order(class="formselect")}} 
+            {{form.submit(class="button")}}
+        </div>
+    </form>
 
     <!--     TODO: (milestone 2) Format posts -->
     <div class="postlist">

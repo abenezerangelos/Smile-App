@@ -14,12 +14,12 @@ def get_taglabel(tag):
 
 class PostForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
-    happiness_level = SelectField('Happiness Level',choices = [(3, 'I can\'t stop smiling'), (2, 'Really happy'), (1,'Happy')])
+    happiness_level = SelectField('Happiness Level', choices = [(3, 'I can\'t stop smiling'), (2, 'Really happy'), (1,'Happy')])
     tag = QuerySelectMultipleField('Tag', query_factory= get_tag, get_label=get_taglabel, widget=ListWidget(prefix_label=False), option_widget=CheckboxInput())
     submit = SubmitField('Post')
     body = TextAreaField('Post Message', validators=[DataRequired(), Length(max=1500)])
 
-class SortForm():
-    sort_order = SelectField(choices = [(4, 'Date'),(3, 'Title'), (2, '# of likes'), (1, 'Happiness level')])
+class SortForm(FlaskForm):
+    sort_order = SelectField('Sort Order', choices = [(4, 'Date'),(3, 'Title'), (2, '# of likes'), (1, 'Happiness level')])
     submit = SubmitField('Refresh')
 

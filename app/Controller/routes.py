@@ -6,17 +6,30 @@ from config import Config
 
 from app import db
 from app.Model.models import Post, Tag, postTags
-from app.Controller.forms import PostForm
+from app.Controller.forms import PostForm, SortForm
 
 bp_routes = Blueprint('routes', __name__)
 bp_routes.template_folder = Config.TEMPLATE_FOLDER #'..\\View\\templates'
 
 
-@bp_routes.route('/', methods=['GET'])
-@bp_routes.route('/index', methods=['GET'])
+@bp_routes.route('/', methods=['GET', 'POST'])
+@bp_routes.route('/index', methods=['GET', 'POST'])
 def index():
+    sform = SortForm()
     posts = Post.query.order_by(Post.timestamp.desc())
-    return render_template('index.html', title="Smile Portal", posts=posts.all())
+    
+    if sform.validate_on_submit():
+        print (sform.sort_order.data, type(sform.sort_order.data).__name__)
+        if sform.sort_order.data == 1:
+            posts = Post.query.order_by(Post.happiness_level.desc())
+        elif sform.sort_order.data == 2:
+            posts = Post.query.order_by(Post.likes.desc())
+        elif sform.sort_order.data == 3:
+            posts = Post.query.order_by(Post.title.desc())
+        else:
+            posts = Post.query.order_by(Post.timestamp.desc())
+    
+    return render_template('index.html', title="Smile Portal", posts=posts, form = sform)
 
 @bp_routes.route('/postsmile', methods=['GET', 'POST'])  
 def postsmile():
