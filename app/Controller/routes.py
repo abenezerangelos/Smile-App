@@ -20,15 +20,16 @@ def index():
     
     if sform.validate_on_submit():
         print (sform.sort_order.data, type(sform.sort_order.data).__name__)
-        if sform.sort_order.data == 1:
+        sortSelection = int(sform.sort_order.data)
+        if sortSelection == 1:
             posts = Post.query.order_by(Post.happiness_level.desc())
-        elif sform.sort_order.data == 2:
+        elif sortSelection == 2:
             posts = Post.query.order_by(Post.likes.desc())
-        elif sform.sort_order.data == 3:
+        elif sortSelection == 3:
             posts = Post.query.order_by(Post.title.desc())
         else:
             posts = Post.query.order_by(Post.timestamp.desc())
-    
+            
     return render_template('index.html', title="Smile Portal", posts=posts, form = sform)
 
 @bp_routes.route('/postsmile', methods=['GET', 'POST'])  
