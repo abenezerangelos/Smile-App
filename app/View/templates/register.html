@@ -2,7 +2,24 @@
 
 {% block content %}
     <h1>Register</h1>
-
+    {% if form %}
     <!-- TODO: (milestone 3) Include the template for "user registration" form here..  -->
-    
+        <div>
+            {{form.username.label}}<br>
+            {{form.username(class="forminput")}}<br>
+
+            {{form.email.label}}<br>
+            {{form.email(class="forminput")}}<br>
+
+            {{form.password.label}}<br>
+            {{form.password(class="forminput")}}<br>
+
+            {{form.password2.label}}<br>
+            {{form.password2(class="forminput")}}<br>
+
+            {{form.submit(class="button")}}
+        </div>
+
+    {% endif %}
+
 {% endblock %}
