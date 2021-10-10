@@ -5,6 +5,7 @@
        {% else %}
           <title> Welcome to Smile Portal! </title>
        {% endif %}
+       {{ moment.include_moment() }}
        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
        <!--TODO: (milestone 3)  Include `moment` library -->
     </head>

@@ -20,7 +20,7 @@
                </div>
                <div class="posttimestamp"> 
                   <!-- (milestone3) TODO: format the timestamp; display as local date/time-->
-                  Posted at: {{ post.timestamp }}
+                  Posted at: {{ moment(post.timestamp).format('LLL') }}<br><br>
                </div> 
             </td> 
 
