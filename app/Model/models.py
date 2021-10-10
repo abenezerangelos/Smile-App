@@ -15,6 +15,7 @@ postTags = db.Table('post_tags',
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     title = db.Column(db.String(150))
     body = db.Column(db.String(1500))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
@@ -39,6 +40,7 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(64), unique = True)
     email = db.Column(db.String(120), unique = True)
     password_hash = db.Column(db.String(128))
+    posts = db.relationship('Post', backref = 'writer', lazy='dynamic')
 
     def __repr__(self):
         return ('id: {} username: {} email: {}'.format(self.id, self.username, self.email))
@@ -48,6 +50,9 @@ class User(UserMixin, db.Model):
 
     def get_password(self, password):
         return check_password_hash(self.password_hash, password)
+
+    def get_user_posts(self):
+        return self.posts
     
 
 
