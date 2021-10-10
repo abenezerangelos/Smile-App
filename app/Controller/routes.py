@@ -19,7 +19,7 @@ bp_routes.template_folder = Config.TEMPLATE_FOLDER #'..\\View\\templates'
 def index():
     sform = SortForm()
     posts = Post.query.order_by(Post.timestamp.desc())
-    
+
     if sform.validate_on_submit():
         print (sform.sort_order.data, type(sform.sort_order.data).__name__)
         sortSelection = int(sform.sort_order.data)
