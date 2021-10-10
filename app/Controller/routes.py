@@ -23,14 +23,25 @@ def index():
     if sform.validate_on_submit():
         print (sform.sort_order.data, type(sform.sort_order.data).__name__)
         sortSelection = int(sform.sort_order.data)
-        if sortSelection == 1:
-            posts = Post.query.order_by(Post.happiness_level.desc())
-        elif sortSelection == 2:
-            posts = Post.query.order_by(Post.likes.desc())
-        elif sortSelection == 3:
-            posts = Post.query.order_by(Post.title.desc())
+        if sform.checkbox.data == True:
+            if sortSelection == 1:
+                posts = current_user.get_user_posts().order_by(Post.happiness_level.desc())
+            elif sortSelection == 2:
+                posts = current_user.get_user_posts().order_by(Post.likes.desc())
+            elif sortSelection == 3:
+                posts = current_user.get_user_posts().order_by(Post.title.desc())
+            else:
+                posts = current_user.get_user_posts().order_by(Post.timestamp.desc())
         else:
-            posts = Post.query.order_by(Post.timestamp.desc())
+            if sortSelection == 1:
+                posts = Post.query.order_by(Post.happiness_level.desc())
+            elif sortSelection == 2:
+                posts = Post.query.order_by(Post.likes.desc())
+            elif sortSelection == 3:
+                posts = Post.query.order_by(Post.title.desc())
+            else:
+                posts = Post.query.order_by(Post.timestamp.desc())
+            
             
     return render_template('index.html', title="Smile Portal", posts=posts, form = sform)
 
