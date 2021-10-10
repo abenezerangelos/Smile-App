@@ -3,23 +3,25 @@
 {% block content %}
     <h1>Register</h1>
     {% if form %}
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
     <!-- TODO: (milestone 3) Include the template for "user registration" form here..  -->
-        <div>
-            {{form.username.label}}<br>
-            {{form.username(class="forminput")}}<br>
+            <div>
+                {{form.username.label}}<br>
+                {{form.username(class="forminput")}}<br>
 
-            {{form.email.label}}<br>
-            {{form.email(class="forminput")}}<br>
+                {{form.email.label}}<br>
+                {{form.email(class="forminput")}}<br>
 
-            {{form.password.label}}<br>
-            {{form.password(class="forminput")}}<br>
+                {{form.password.label}}<br>
+                {{form.password(class="forminput")}}<br>
 
-            {{form.password2.label}}<br>
-            {{form.password2(class="forminput")}}<br>
+                {{form.password2.label}}<br>
+                {{form.password2(class="forminput")}}<br>
 
-            {{form.submit(class="button")}}
-        </div>
-
+                {{form.submit()}}
+            </div>
+        </form>
     {% endif %}
 
 {% endblock %}

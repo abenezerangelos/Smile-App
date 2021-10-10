@@ -1,10 +1,13 @@
 from flask import Flask
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
 # TODO: (milestone 3) import LoginManager and Moment extensions here
 
 db = SQLAlchemy()
 # TODO: (milestone 3) create LoginManager object and configure the login view as 'auth.login', i.e, `login` route in `auth` Blueprint. 
+login = LoginManager()
+login.login_view = 'auth.login'
 # TODO: (milestone 3) create Moment object
 
 def create_app(config_class=Config):
@@ -14,6 +17,7 @@ def create_app(config_class=Config):
     app.template_folder = config_class.TEMPLATE_FOLDER
 
     db.init_app(app)
+    login.init_app(app)
     # TODO: (milestone 3) Configure the app object for login using `init_app` function. 
     # TODO: (milestone 3) Configure the app object for moment using `init_app` function. 
 
